@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -9,8 +8,10 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import styles from "./globals.css";
+
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: styles }
 ];
 
 export default function App() {
@@ -23,6 +24,9 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <div className="bg-base-300">
+          <span className="text-primary">This will be my NavBar</span>
+        </div>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
