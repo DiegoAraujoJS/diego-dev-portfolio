@@ -9,6 +9,7 @@ import {
 } from "@remix-run/react";
 
 import styles from "./globals.css";
+import Layout from "./components/Layout";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles }
@@ -24,9 +25,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div className="bg-base-300">
-          <span className="text-primary">This will be my NavBar</span>
-        </div>
+        <Layout/>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

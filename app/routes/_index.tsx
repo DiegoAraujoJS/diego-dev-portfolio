@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { profilePhoto } from "~/utils/constants";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,7 +11,13 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div>
-      Home
+      <div className="flex justify-center">
+        <div className="avatar online">
+          <div className="w-24 rounded-full">
+            <img src={profilePhoto} alt="profilePhoto"/>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
