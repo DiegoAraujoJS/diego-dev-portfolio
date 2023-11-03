@@ -1,9 +1,9 @@
+import { Link } from "@remix-run/react";
 import { profilePhoto } from "~/utils/constants";
 
 export default function Layout() {
   return (
     <div className="navbar bg-base-300 justify-between">
-      <span className="text-xl">Diego Araujo Dev</span>
 
       <div id="navbarTags" className="w-1/3 justify-around">
         <div className="avatar online">
@@ -14,12 +14,11 @@ export default function Layout() {
         <div>
           Projects
         </div>
-        <div>
-          Contact
-        </div>
-        <div onClick={(e) => {}}>
-          <img src="https://flagsapi.com/ES/flat/32.png"/>
-        </div>
+        <Link to="/contact">
+          <div>
+            Contact
+          </div>
+        </Link>
       </div>
     </div>
   )
