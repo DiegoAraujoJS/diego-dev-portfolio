@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const [scrollPosition, setScrollPosition] = useState(0)
   return (
-    <div className="h-full snap-y snap-mandatory overflow-scroll" onScroll={(e: any) => {
+    <div className="h-full snap-y snap-mandatory overflow-scroll scroll-smooth" onScroll={(e: any) => {
       if (e.target.scrollTop % e.target.offsetHeight === 0) {
         const pageLength = e.target.offsetHeight
         setScrollPosition([0, 1, 2].find(page => pageLength * page === e.target.scrollTop) || 0)
@@ -25,9 +25,9 @@ export default function Index() {
         {[0, 1, 2].map((step, i) => <li key={i} className={`step ${step === scrollPosition ? 'step-primary' : ''}`}></li>)}
       </ul>
 
-      <Presentation className="snap-start h-full"/>
-      <Proyects className="snap-start h-full"/>
-      <Contact className="snap-start h-full"/>
+      <Presentation className="snap-start h-full" id="presentation"/>
+      <Proyects className="snap-start h-full" id="projects"/>
+      <Contact className="snap-start h-full" id="contact"/>
 
     </div>
   );

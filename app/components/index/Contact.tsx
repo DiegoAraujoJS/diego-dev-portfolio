@@ -1,6 +1,6 @@
-export default function Contact({className} : {className?: string}) {
+export default function Contact({className, id} : {className?: string, id?: string}) {
   return (
-    <div className={`${className ?? ""}`}>
+    <div className={`${className ?? ""}`} id={id}>
       <p className="w-full text-center text-3xl border border-solid border-black">Contact</p>
       <div className="border border-solid border-black">
         Contact box

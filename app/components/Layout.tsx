@@ -11,10 +11,12 @@ export default function Layout() {
             <img src={profilePhoto} alt="profilePhoto"/>
           </div>
         </div>
-        <div>
-          Projects
-        </div>
-        <Link to="/contact">
+        <Link to="#projects">
+          <div>
+            Projects
+          </div>
+        </Link>
+        <Link to="#contact">
           <div>
             Contact
           </div>

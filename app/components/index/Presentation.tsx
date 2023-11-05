@@ -1,9 +1,9 @@
 import { coverLetter } from "~/utils/constants";
 import EnhancedProfilePhoto from "./ProfilePhoto";
 
-export default function Presentation({className} : {className?: string}) {
+export default function Presentation({className, id} : {className?: string, id?: string}) {
   return (
-      <div className={`flex h-full w-full ${className ?? ""}`}>
+      <div className={`flex h-full w-full ${className ?? ""}`} id={id}>
 
         <div className="w-full">
 
