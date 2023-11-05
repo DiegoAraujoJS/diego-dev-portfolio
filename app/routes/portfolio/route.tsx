@@ -5,7 +5,7 @@ import Proyects from "~/components/index/Proyects";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: "Diego Araujo Developer" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
@@ -24,7 +24,6 @@ export default function Index() {
       <Presentation className="snap-start h-full"/>
       <Proyects className="snap-start h-full"/>
       <Contact className="snap-start h-full"/>
-
 
     </div>
   );
