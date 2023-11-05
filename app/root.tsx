@@ -12,7 +12,8 @@ import styles from "./globals.css";
 import Layout from "./components/Layout";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles }
+  { rel: "stylesheet", href: styles },
+  {rel: "icon", type: "image/x-icon", href: "/coding.png"}
 ];
 
 export default function App() {
