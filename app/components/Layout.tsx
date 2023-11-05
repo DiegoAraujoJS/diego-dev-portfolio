@@ -11,6 +11,11 @@ export default function Layout() {
             <img src={profilePhoto} alt="profilePhoto"/>
           </div>
         </div>
+        <Link to="#about">
+          <div>
+            About
+          </div>
+        </Link>
         <Link to="#projects">
           <div>
             Projects

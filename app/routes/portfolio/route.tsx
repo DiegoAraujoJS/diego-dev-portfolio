@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
-import { useRef, useState } from "react";
+import { useNavigate } from "@remix-run/react";
+import { useState } from "react";
 import Contact from "~/components/index/Contact";
 import Presentation from "~/components/index/Presentation";
 import Proyects from "~/components/index/Proyects";
@@ -10,22 +11,25 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+const pages = [0, 1, 2]
+const ids = ["about", "projects", "contact"]
 
 export default function Index() {
   const [scrollPosition, setScrollPosition] = useState(0)
+  const navigate = useNavigate()
   return (
     <div className="h-full snap-y snap-mandatory overflow-scroll scroll-smooth" onScroll={(e: any) => {
       if (e.target.scrollTop % e.target.offsetHeight === 0) {
         const pageLength = e.target.offsetHeight
-        setScrollPosition([0, 1, 2].find(page => pageLength * page === e.target.scrollTop) || 0)
+        setScrollPosition(pages.find(page => pageLength * page === e.target.scrollTop) || 0)
       }
     }}>
 
       <ul className="steps steps-vertical fixed bottom-5">
-        {[0, 1, 2].map((step, i) => <li key={i} className={`step ${step === scrollPosition ? 'step-primary' : ''}`}></li>)}
+        {pages.map((step, i) => <li key={i} onClick={() => navigate(`#${ids[step]}`)} className={`cursor-pointer step ${step === scrollPosition ? 'step-primary' : ''}`}></li>)}
       </ul>
 
-      <Presentation className="snap-start h-full" id="presentation"/>
+      <Presentation className="snap-start h-full" id="about"/>
       <Proyects className="snap-start h-full" id="projects"/>
       <Contact className="snap-start h-full" id="contact"/>
 
