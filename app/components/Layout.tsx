@@ -7,7 +7,7 @@ export default function Layout({theme, setTheme} : {
   theme: ItemType<typeof daisyUiThemes>
   setTheme: (t: ItemType<typeof daisyUiThemes>) => void
 }) {
-  const themeN = useRef(-1)
+  // const themeN = useRef(-1)
   return (
     <div className="navbar bg-base-300 justify-between">
 

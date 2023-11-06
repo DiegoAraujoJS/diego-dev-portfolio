@@ -5,7 +5,6 @@ const myPhoneNumber = "5491135846028"
 
 import styles from "./contact.module.css"
 
-
 const unsecuredCopyToClipboard = (text: string) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea); return Promise.resolve()};
 
 /**
@@ -48,6 +47,20 @@ function QrImage({qr} : {
   )
 }
 
+function Icon({href, imgSrc, alt}: {
+  href: string
+  imgSrc: string
+  alt: string
+}) {
+  return (
+      <div className="tooltip tooltip-right cursor-pointer" data-tip="click me to contact!">
+        <a href={href} target="_blank">
+          <img src={imgSrc} alt={alt}/>
+        </a>
+      </div>
+  )
+}
+
 export default function Contact({className, id} : {className?: string, id?: string}) {
   const [qr, setQr] = useState<"whatsapp" | "telegram">()
   return (
@@ -58,24 +71,29 @@ export default function Contact({className, id} : {className?: string, id?: stri
       <div className="flex flex-col justify-between h-80">
         {/* <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" /> */}
         <div className="flex justify-around">
-          <div className="cursor-pointer">
-            <a href="https://www.linkedin.com/in/diego-araujo-dev" target="_blank">
-              <img src="/portfolio/icons8-linkedin-color/icons8-linkedin-144.svg" alt="linkedin"/>
-            </a>
-          </div>
-          <div className="cursor-pointer text-center">
-            <a href={`https://wa.me/${myPhoneNumber}?text=${encodeURIComponent("Hi Diego, I wish to offer you...")}`} target="_blank">
-              <img src="/portfolio/icons8-whatsapp-color/icons8-whatsapp-144.svg" alt="whatsapp"/>
-            </a>
+
+          <Icon href="https://www.linkedin.com/in/diego-araujo-dev" imgSrc="/portfolio/icons8-linkedin-color/icons8-linkedin-144.svg" alt="linkedin"/>
+
+          <div className="text-center">
+            <Icon 
+              href={`https://wa.me/${myPhoneNumber}?text=${encodeURIComponent("Hi Diego, I wish to offer you...")}`} 
+              imgSrc="/portfolio/icons8-whatsapp-color/icons8-whatsapp-144.svg" 
+              alt="whatsapp"
+            />
             <div className="cursor-pointer" onClick={() => setQr("whatsapp")}>
               Get QR Code
             </div>
           </div>
-          <div className="cursor-pointer text-center" onClick={() => setQr("telegram")}>
-            <a href={`https://t.me/diego_araujo_dev?text=${encodeURIComponent("Hi Diego, I wish to offer you...")}`} target="_blank">
-              <img src="/portfolio/icons8-telegram-app-color/icons8-telegram-app-144.svg" alt="telegram"/>
-            </a>
-            Get QR Code
+
+          <div className="text-center">
+            <Icon
+              href={`https://t.me/diego_araujo_dev?text=${encodeURIComponent("Hi Diego, I wish to offer you...")}`}
+              imgSrc="/portfolio/icons8-telegram-app-color/icons8-telegram-app-144.svg" 
+              alt="telegram"
+            />
+            <div className="cursor-pointer" onClick={() => setQr("telegram")}>
+              Get QR Code
+            </div>
           </div>
         </div>
 

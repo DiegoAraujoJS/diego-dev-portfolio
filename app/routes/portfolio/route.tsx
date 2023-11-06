@@ -3,7 +3,7 @@ import { useNavigate } from "@remix-run/react";
 import { useState } from "react";
 import Contact from "~/components/index/Contact";
 import Presentation from "~/components/index/Presentation";
-import Proyects from "~/components/index/Proyects";
+import Projects from "~/components/index/Projects";
 
 export const meta: MetaFunction = () => {
   return [
@@ -27,7 +27,7 @@ export default function Index() {
       </ul>
 
       <Presentation className="snap-start h-full" id="about"/>
-      <Proyects className="snap-start h-full" id="projects"/>
+      <Projects className="snap-start h-full" id="projects"/>
       <Contact className="snap-start h-full" id="contact"/>
 
     </div>
