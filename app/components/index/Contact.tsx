@@ -6,19 +6,12 @@ const myPhoneNumber = "5491135846028"
 import styles from "./contact.module.css"
 
 const CopyToClipboardLink: React.FC = () => {
-  const copyTextToClipboard = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      toast.success('Email copied to clipboard')
-    } catch (err) {
-      console.error('Failed to copy text: ', err);
-    }
-  };
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault(); // Prevent the default anchor action
     const textToCopy = event.currentTarget.innerHTML;
-    copyTextToClipboard(textToCopy);
+    return navigator.clipboard.writeText(textToCopy)
+      .then(() => toast.success('Email copied to clipboard'))
   };
 
   return (
