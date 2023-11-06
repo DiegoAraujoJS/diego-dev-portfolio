@@ -1,0 +1,24 @@
+/* Container that will act as the 'cropping' area */
+.crop-container {
+  min-height: 200px;
+  min-width: 200px;
+  position: relative;
+}
+
+/* The image tag that will be cropped */
+.crop-container img {
+  position: absolute;
+  top: 50%;           /* Center the image vertically */
+  left: 50%;          /* Center the image horizontally */
+  object-fit: none;   /* Do not resize the image to fit the container */
+  object-position: center; /* Align the center of the image with the container's center */
+  border-radius: 15px;
+}
+
+.telegram img {
+  transform: translate(-50%, -50%) scale(calc(200 / 700))
+}
+
+.whatsapp img {
+  transform: translate(-50%, -50%) scale(calc(200 / 480));
+}

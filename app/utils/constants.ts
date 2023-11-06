@@ -1,3 +1,35 @@
+export const daisyUiThemes = [
+  "light",
+  "dark",
+  "cupcake",
+  "bumblebee",
+  "emerald",
+  "corporate",
+  "synthwave",
+  "retro",
+  "cyberpunk",
+  "valentine",
+  "halloween",
+  "garden",
+  "forest",
+  "aqua",
+  "lofi",
+  "pastel",
+  "fantasy",
+  "wireframe",
+  "black",
+  "luxury",
+  "dracula",
+  "cmyk",
+  "autumn",
+  "business",
+  "acid",
+  "lemonade",
+  "night",
+  "coffee",
+  "winter",
+] as const
+
 export const profilePhoto = "https://avatars.githubusercontent.com/u/77455764?s=400&u=8c9c3b98363535715dafdaeb3f329df9f3493dc7&v=4"
 
 export const coverLetter = `Two years ago I started coding by myself, learning the basics on Python, to the point of making a character generator for a dungeons and dragons kind game. I remained attached to coding and continued programming whenever I had an idea. 

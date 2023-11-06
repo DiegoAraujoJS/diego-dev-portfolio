@@ -25,7 +25,6 @@ export default function Presentation({className, id} : {className?: string, id?:
           <div className="text-2xl text-center m-5">About Me</div>
 
           <div className="card w-96 bg-base-100 shadow-xl">
-            <br/>
             <div className="card-body items-center text-center">
               <p>{coverLetter}</p>
             </div>

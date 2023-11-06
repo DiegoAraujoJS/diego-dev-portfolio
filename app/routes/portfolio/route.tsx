@@ -19,10 +19,7 @@ export default function Index() {
   const navigate = useNavigate()
   return (
     <div className="h-full snap-y snap-mandatory overflow-scroll scroll-smooth" onScroll={(e: any) => {
-      if (e.target.scrollTop % e.target.offsetHeight === 0) {
-        const pageLength = e.target.offsetHeight
-        setScrollPosition(pages.find(page => pageLength * page === e.target.scrollTop) || 0)
-      }
+      if (e.target.scrollTop % e.target.offsetHeight === 0) setScrollPosition(pages.find(page => e.target.offsetHeight * page === e.target.scrollTop) || 0)
     }}>
 
       <ul className="steps steps-vertical fixed bottom-5">
