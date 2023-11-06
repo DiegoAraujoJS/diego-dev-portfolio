@@ -5,12 +5,28 @@ const myPhoneNumber = "5491135846028"
 
 import styles from "./contact.module.css"
 
-const CopyToClipboardLink: React.FC = () => {
+
+const unsecuredCopyToClipboard = (text: string) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea); return Promise.resolve()};
+
+/**
+ * Copies the text passed as param to the system clipboard
+ * Check if using HTTPS and navigator.clipboard is available
+ * Then uses standard clipboard API, otherwise uses fallback
+*/
+const copyToClipboard = (content: string) => {
+  if (window.isSecureContext && navigator.clipboard) {
+    return navigator.clipboard.writeText(content);
+  } else {
+    return unsecuredCopyToClipboard(content);
+  }
+};
+
+const CopyToClipboardLink = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault(); // Prevent the default anchor action
     const textToCopy = event.currentTarget.innerHTML;
-    return navigator.clipboard.writeText(textToCopy)
+    return copyToClipboard(textToCopy)
       .then(() => toast.success('Email copied to clipboard'))
   };
 
