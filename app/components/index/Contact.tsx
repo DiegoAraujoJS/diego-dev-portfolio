@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 
 const myPhoneNumber = "5491135846028"
 
 import styles from "./contact.module.css"
+import { themeContext } from "~/hooks/ThemeProvider";
 
 const unsecuredCopyToClipboard = (text: string) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea); return Promise.resolve()};
 
@@ -63,6 +64,7 @@ function Icon({href, imgSrc, alt}: {
 
 export default function Contact({className, id} : {className?: string, id?: string}) {
   const [qr, setQr] = useState<"whatsapp" | "telegram">()
+  const {theme} = useContext(themeContext)
   return (
     <div className={`${className ?? ""}`} id={id}>
       <p className="w-full text-center text-4xl p-10">Contact</p>

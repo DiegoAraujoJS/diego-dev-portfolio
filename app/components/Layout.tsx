@@ -1,13 +1,11 @@
 import { Link } from "@remix-run/react";
-import { useRef, useState } from "react";
-import type { ItemType } from "~/types/utils";
-import { daisyUiThemes, profilePhoto } from "~/utils/constants";
+import { useContext, useEffect } from "react";
+import { themeContext } from "~/hooks/ThemeProvider";
+import { profilePhoto } from "~/utils/constants";
 
-export default function Layout({theme, setTheme} : {
-  theme: ItemType<typeof daisyUiThemes>
-  setTheme: (t: ItemType<typeof daisyUiThemes>) => void
-}) {
-  // const themeN = useRef(-1)
+export default function Layout() {
+  const {setTheme, theme} = useContext(themeContext)
+  useEffect(() => console.log("render layout"))
   return (
     <div className="navbar bg-base-300 justify-between">
 

@@ -11,11 +11,12 @@ import {
 import { cssBundleHref } from "@remix-run/css-bundle";
 
 import styles from "./globals.css";
-import { daisyUiThemes } from "./utils/constants";
-import { useState } from "react";
+import {  useEffect, useState } from "react";
 import Layout from "./components/Layout";
-import type { ItemType } from "./types/utils";
 import { Toaster } from "react-hot-toast";
+import { themeContext } from "./hooks/ThemeProvider";
+import { daisyUiThemes } from "./utils/constants";
+import { ItemType } from "./types/utils";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
@@ -36,8 +37,10 @@ export default function App() {
         <Links />
       </head>
       <body className="flex flex-col h-full">
-        <Layout theme={theme} setTheme={setTheme}/>
-        <Outlet/>
+        <themeContext.Provider value={{theme, setTheme}}>
+          <Layout/>
+          <Outlet/>
+        </themeContext.Provider>
 
         <Toaster/>
         <ScrollRestoration />
