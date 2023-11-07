@@ -7,31 +7,25 @@ export default function Layout() {
   const {setTheme, theme} = useContext(themeContext)
   useEffect(() => console.log("render layout"))
   return (
-    <div className="navbar bg-base-300 justify-between">
-
-          <div id="navbarTags" className="w-1/3 justify-around">
-            <div className="avatar online">
-              <div className="w-12 rounded-full">
-                <img src={profilePhoto} alt="profilePhoto"/>
-              </div>
-            </div>
-            <Link to="#about">
-              <div>
-                About
-              </div>
-            </Link>
-            <Link to="#projects">
-              <div>
-                Projects
-              </div>
-            </Link>
-            <Link to="#contact">
-              <div>
-                Contact
-              </div>
-            </Link>
-          </div>
+    <div className="navbar bg-base-300 justify-between px-32">
+      <div id="navbarTags" className="w-1/3 justify-around">
+        <Link to="#about">
           <div>
+            About
+          </div>
+        </Link>
+        <Link to="#projects">
+          <div>
+            Projects
+          </div>
+        </Link>
+        <Link to="#contact">
+          <div>
+            Contact
+          </div>
+        </Link>
+      </div>
+      <div>
         <div className='flex justify-end'>
           <label className="swap swap-rotate">
 
@@ -46,7 +40,7 @@ export default function Layout() {
 
           </label>
         </div>
-          </div>
-        </div>
+      </div>
+    </div>
   )
 }
