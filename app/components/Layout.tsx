@@ -33,28 +33,6 @@ export default function Layout() {
           </div>
           <div>
         <div className='flex justify-end'>
-          {/*
-          <div className="p-3" onClick={() => {
-            themeN.current++
-            if (themeN.current > daisyUiThemes.length - 1) {
-              themeN.current = 0
-            }
-            console.log("theme:", daisyUiThemes[themeN.current])
-            setTheme(daisyUiThemes[themeN.current])
-          }}>
-            -{`>`}
-          </div>
-          <div className="p-3" onClick={() => {
-            themeN.current--
-            if (themeN.current < 0) {
-              themeN.current = daisyUiThemes.length - 1
-            }
-            console.log("theme:", daisyUiThemes[themeN.current])
-            setTheme(daisyUiThemes[themeN.current])
-          }}>
-            {`<`}-
-          </div>
-          */}
           <label className="swap swap-rotate">
 
             {/* this hidden checkbox controls the state */}
