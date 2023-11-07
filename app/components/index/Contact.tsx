@@ -76,14 +76,14 @@ export default function Contact({className, id} : {className?: string, id?: stri
 
           <Icon href="https://www.linkedin.com/in/diego-araujo-dev" imgSrc="/portfolio/icons8-linkedin-color/icons8-linkedin-144.svg" alt="linkedin"/>
 
-          <div className="text-center">
+          <div className="text-center flex flex-col justify-between">
             <Icon 
               href={`https://wa.me/${myPhoneNumber}?text=${encodeURIComponent("Hi Diego, I wish to offer you...")}`} 
               imgSrc="/portfolio/icons8-whatsapp-color/icons8-whatsapp-144.svg" 
               alt="whatsapp"
             />
-            <div className="cursor-pointer" onClick={() => setQr("whatsapp")}>
-              Get QR Code
+            <div className="cursor-pointer flex justify-center pt-2" onClick={() => setQr("whatsapp")}>
+              <img src={theme === "garden" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150" alt="qr"/>
             </div>
           </div>
 
@@ -93,8 +93,8 @@ export default function Contact({className, id} : {className?: string, id?: stri
               imgSrc="/portfolio/icons8-telegram-app-color/icons8-telegram-app-144.svg" 
               alt="telegram"
             />
-            <div className="cursor-pointer" onClick={() => setQr("telegram")}>
-              Get QR Code
+            <div className="cursor-pointer flex justify-center pt-2" onClick={() => setQr("telegram")}>
+              <img src={theme === "garden" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150" alt="qr"/>
             </div>
           </div>
         </div>
