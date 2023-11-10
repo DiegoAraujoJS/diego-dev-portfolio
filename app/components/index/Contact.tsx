@@ -13,29 +13,16 @@ const unsecuredCopyToClipboard = (text: string) => { const textArea = document.c
  * Check if using HTTPS and navigator.clipboard is available
  * Then uses standard clipboard API, otherwise uses fallback
 */
-const copyToClipboard = (content: string) => {
-  if (window.isSecureContext && navigator.clipboard) {
-    return navigator.clipboard.writeText(content);
-  } else {
-    return unsecuredCopyToClipboard(content);
-  }
-};
+const copyToClipboard = (content: string) => window.isSecureContext && navigator.clipboard ? navigator.clipboard.writeText(content) : unsecuredCopyToClipboard(content)
 
-const CopyToClipboardLink = () => {
-
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault(); // Prevent the default anchor action
-    const textToCopy = event.currentTarget.innerHTML;
-    return copyToClipboard(textToCopy)
-      .then(() => toast.success('Email copied to clipboard'))
-  };
-
-  return (
-    <a href="#" onClick={handleClick} className="link link-hover text-2xl">
-      diegolaraujo96@gmail.com
-    </a>
-  );
-};
+const CopyToClipboardLink = () => <a href="#" onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {
+  event.preventDefault(); // Prevent the default anchor action
+  const textToCopy = event.currentTarget.innerHTML;
+  return copyToClipboard(textToCopy)
+    .then(() => toast.success('Email copied to clipboard'))
+}} className="link link-hover text-2xl">
+  diegolaraujo96@gmail.com
+</a>
 
 function QrImage({qr} : {
   qr: "whatsapp" | "telegram"
@@ -44,7 +31,6 @@ function QrImage({qr} : {
     <div className={`m-10 ${styles['crop-container']} ${styles[qr]}`}>
       <img src={`/portfolio/${qr === "whatsapp" ? "whatsapp_480.png" : "telegram_700.png"}`} alt={`${qr === "whatsapp" ? "wa_me.jpeg" : ""}`}/>
     </div>
-
   )
 }
 
