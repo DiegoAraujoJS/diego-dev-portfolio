@@ -27,7 +27,7 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
-  const [theme, setTheme] = useState<ItemType<typeof daisyUiThemes>>("dark")
+  const [theme, setTheme] = useState<ItemType<typeof daisyUiThemes>>("synthwave")
   return (
     <html lang="en" className="h-full" data-theme={theme}>
       <head>
