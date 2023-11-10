@@ -42,7 +42,7 @@ function Icon({href, imgSrc, alt}: {
   return (
       <div className="tooltip tooltip-right cursor-pointer" data-tip="click me to contact!">
         <a href={href} target="_blank">
-          <img src={imgSrc} alt={alt}/>
+          <img src={imgSrc} alt={alt} className="transform hover:scale-110"/>
         </a>
       </div>
   )
@@ -69,7 +69,7 @@ export default function Contact({className, id} : {className?: string, id?: stri
               alt="whatsapp"
             />
             <div className="cursor-pointer flex justify-center pt-2" onClick={() => setQr("whatsapp")}>
-              <img src={theme === "garden" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150" alt="qr"/>
+              <img src={theme === "garden" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150 hover:scale-[200%]" alt="qr"/>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ export default function Contact({className, id} : {className?: string, id?: stri
               alt="telegram"
             />
             <div className="cursor-pointer flex justify-center pt-2" onClick={() => setQr("telegram")}>
-              <img src={theme === "garden" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150" alt="qr"/>
+              <img src={theme === "garden" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150 hover:scale-[200%]" alt="qr"/>
             </div>
           </div>
         </div>
