@@ -1,5 +1,7 @@
 import { useNavigate } from "@remix-run/react"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { themeContext } from "~/hooks/ThemeProvider"
+import useTheme from "~/hooks/useTheme"
 
 type Project = {
   title: string
@@ -18,6 +20,7 @@ function toCamelCase(str: string): string {
 }
 
 function CarouselItem({title, imgSrc, description, repos} : Project) {
+  const theme = useTheme()
   return (
     <div className="carousel-item w-full" id={toCamelCase(title)}>
       <div className="flex w-full">
@@ -30,7 +33,7 @@ function CarouselItem({title, imgSrc, description, repos} : Project) {
             {description.map((paragraph, i) => <p key={i} className="mb-4">{paragraph}</p>)}
           </div>
           <div className="group flex items-end">
-            <img src="/portfolio/github-mark/github-mark-white.svg" alt="github" className="flex-none peer h-16 w-16"/>
+            <img src={`/portfolio/github-mark/github-mark${theme === "light" ? "" : "-white"}.svg`} alt="github" className="flex-none peer h-16 w-16"/>
             <div className="toast relative hidden peer-hover:flex hover:flex px-5 py-0">
               <div className="alert alert-info p-3">
                 <div className="text-base">
