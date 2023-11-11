@@ -36,12 +36,11 @@ function CarouselItem({title, imgSrc, description, repos} : Project) {
             <img src={`/portfolio/github-mark/github-mark${theme === "light" ? "" : "-white"}.svg`} alt="github" className="flex-none peer h-16 w-16"/>
             <div className="toast relative hidden peer-hover:flex hover:flex px-5 py-0">
               <div className="alert alert-info p-3">
-                <div className="text-base">
+                <div className="text-base grid grid-cols-auto-1fr gap-x-3 gap-y-1">
                   {repos.map((repo, i) => {
-                    if (!repo.description) return <a key={i} href={repo.url} className="link link-hover" target="_blank">{repo.url}</a>
                     return (
-                      <div key={i}>
-                        <span>{repo.description} -{`>`} </span>
+                      <div key={i} className="contents">
+                        <span className="whitespace-nowrap">{repo.description}</span>
                         <a href={repo.url} className="link link-hover" target="_blank">{repo.url}</a>
                       </div>
                     )
