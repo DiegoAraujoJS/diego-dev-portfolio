@@ -5,8 +5,8 @@ import { themeContext } from "~/hooks/ThemeProvider";
 export default function Layout() {
   const {setTheme, theme} = useContext(themeContext)
   return (
-    <div className="navbar bg-base-200 justify-between px-32">
-      <div id="navbarTags" className="w-1/3 justify-around">
+    <div className="navbar bg-base-200 justify-between md:px-32">
+      <div id="navbarTags" className="w-full md:w-1/3 justify-around">
         <Link to="#about">
           <div>
             About
