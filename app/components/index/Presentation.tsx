@@ -3,7 +3,7 @@ import EnhancedProfilePhoto from "./ProfilePhoto";
 
 export default function Presentation({className, id} : {className?: string, id?: string}) {
   return (
-      <div className={`flex h-full w-full ${className ?? ""}`} id={id}>
+      <div className={`md:flex md:h-full md:w-full ${className ?? ""}`} id={id}>
 
         <div className="w-full">
 

@@ -1,6 +1,5 @@
 import { useNavigate } from "@remix-run/react"
-import { useContext, useState } from "react"
-import { themeContext } from "~/hooks/ThemeProvider"
+import { useState } from "react"
 import useTheme from "~/hooks/useTheme"
 
 type Project = {

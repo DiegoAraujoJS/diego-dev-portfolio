@@ -26,9 +26,9 @@ export default function Index() {
         {pages.map((step, i) => <li key={i} onClick={() => navigate(`#${ids[step]}`)} className={`cursor-pointer step ${step === scrollPosition ? 'step-primary' : ''}`}></li>)}
       </ul>
 
-      <Presentation className="snap-start h-full" id="about"/>
-      <Projects className="snap-start h-full" id="projects"/>
-      <Contact className="snap-start h-full" id="contact"/>
+      <Presentation className="md:snap-start md:h-full" id="about"/>
+      <Projects className="md:snap-start md:h-full" id="projects"/>
+      <Contact className="md:snap-start md:h-full" id="contact"/>
 
     </div>
   );
