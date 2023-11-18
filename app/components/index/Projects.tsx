@@ -12,48 +12,6 @@ type Project = {
   }[]
 }
 
-function toCamelCase(str: string): string {
-  return str
-    .toLowerCase()
-    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
-}
-
-function CarouselItem({title, imgSrc, description, repos} : Project) {
-  const theme = useTheme()
-  return (
-    <div className="carousel-item w-full" id={toCamelCase(title)}>
-      <div className="flex w-full">
-        <div className="">
-          <p className="text-3xl text-center w-full">{title}</p>
-          <img src={imgSrc} className="w-full" alt="Tailwind CSS Carousel component" />
-        </div>
-        <div className="flex-1 p-16 text-xl flex flex-col justify-between">
-          <div>
-            {description.map((paragraph, i) => <p key={i} className="mb-4">{paragraph}</p>)}
-          </div>
-          <div className="group flex items-end">
-            <img src={`/portfolio/github-mark/github-mark${theme === "light" ? "" : "-white"}.svg`} alt="github" className="flex-none peer h-16 w-16"/>
-            <div className="toast relative hidden peer-hover:flex hover:flex px-5 py-0">
-              <div className="alert alert-info p-3">
-                <div className="text-base grid grid-cols-auto-1fr gap-x-3 gap-y-1">
-                  {repos.map((repo, i) => {
-                    return (
-                      <div key={i} className="contents">
-                        <span className="whitespace-nowrap">{repo.description}</span>
-                        <a href={repo.url} className="link link-hover" target="_blank">{repo.url}</a>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const projects: Project[] = [
   {
     title: "Discord Jira Bot",
@@ -76,7 +34,6 @@ const projects: Project[] = [
       "The application consists in a deployment control system based in git.",
       "The programmers pick the specific update they wish to release, and the system takes care of packaging and deploying it on the production servers.",
       "In this way, developer experience is optimized by simplifying the process, allowing for a focus on coding rather than deployment logistics.",
-      "The system shows the history of deployments, so to enable quick rollbacks to previous versions if needed. This facilitates the preservation of system reliability, as it provides the capability to swiftly revert to a stable release should a new update cause any disruptions."
     ],
     repos: [
       {
@@ -90,6 +47,49 @@ const projects: Project[] = [
     ]
   },
 ]
+
+function toCamelCase(str: string): string {
+  return str
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+}
+
+function CarouselItem({title, imgSrc, description, repos} : Project) {
+  const theme = useTheme()
+  return (
+    <div className="carousel-item w-full" id={toCamelCase(title)}>
+      <div className="flex md:w-full">
+        <div className="w-1/3 h-auto">
+          <p className="md:text-3xl text-xl text-center w-full">{title}</p>
+          <img src={imgSrc} className="" alt="Tailwind CSS Carousel component" />
+        </div>
+        <div className="flex-1 p-4 md:p-16 md:text-xl flex flex-col justify-between">
+          <div>
+            {description.map((paragraph, i) => <p key={i} className="mb-4">{paragraph}</p>)}
+          </div>
+          <div className="group flex items-end">
+            <img src={`/portfolio/github-mark/github-mark${theme === "light" ? "" : "-white"}.svg`} alt="github" className="flex-none peer h-16 w-16"/>
+            <div className="toast absolute toast-bottom hidden peer-hover:flex hover:flex px-5 py-0">
+              <div className="alert alert-info p-3">
+                <div className="text-base grid grid-cols-auto-1fr gap-x-3 gap-y-1">
+                  {repos.map((repo, i) => {
+                    return (
+                      <div key={i} className="contents">
+                        <span className="whitespace-nowrap">{repo.description}</span>
+                        <a href={repo.url} className="link link-hover" target="_blank">{repo.url}</a>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 
 export default function Projects({className, id} : {className?: string, id?: string}) {
   const [scrollPosition, setScrollPosition] = useState(0)
