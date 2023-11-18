@@ -59,7 +59,7 @@ function CarouselItem({title, imgSrc, description, repos} : Project) {
   return (
     <div className="carousel-item w-full" id={toCamelCase(title)}>
       <div className="flex md:w-full">
-        <div className="w-1/3 h-auto">
+        <div className="w-1/4 h-auto">
           <p className="md:text-3xl text-xl text-center w-full">{title}</p>
           <img src={imgSrc} className="" alt="Tailwind CSS Carousel component" />
         </div>
@@ -67,16 +67,16 @@ function CarouselItem({title, imgSrc, description, repos} : Project) {
           <div>
             {description.map((paragraph, i) => <p key={i} className="mb-4">{paragraph}</p>)}
           </div>
-          <div className="group flex items-end">
+          <div className="group flex items-end w-11/12">
             <img src={`/portfolio/github-mark/github-mark${theme === "light" ? "" : "-white"}.svg`} alt="github" className="flex-none peer h-16 w-16"/>
-            <div className="toast absolute toast-bottom hidden peer-hover:flex hover:flex px-5 py-0">
-              <div className="alert alert-info p-3">
-                <div className="text-base grid grid-cols-auto-1fr gap-x-3 gap-y-1">
+            <div className="toast relative  peer-hover:flex hover:flex px-5 py-0 min-w-0">
+              <div className="alert alert-info overflow-hidden p-1 sm:p-3">
+                <div className="text-base grid grid-cols-auto-1fr gap-x-3 gap-y-1 max-w-full overflow-hidden">
                   {repos.map((repo, i) => {
                     return (
                       <div key={i} className="contents">
-                        <span className="whitespace-nowrap">{repo.description}</span>
-                        <a href={repo.url} className="link link-hover" target="_blank">{repo.url}</a>
+                        <span className="whitespace-nowrap text-left">{repo.description}</span>
+                        <a href={repo.url} className="link link-hover text-left" target="_blank">{repo.url}</a>
                       </div>
                     )
                   })}
