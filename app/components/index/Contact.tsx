@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 const myPhoneNumber = "5491135846028"
 
 import styles from "./contact.module.css"
-import { themeContext } from "~/hooks/ThemeProvider";
 import useTheme from "~/hooks/useTheme";
 
 const unsecuredCopyToClipboard = (text: string) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea); return Promise.resolve()};
@@ -49,7 +48,7 @@ export default function Contact({className, id} : {className?: string, id?: stri
 
 
       <div className="flex flex-col justify-between h-80">
-        <div className="flex justify-around">
+        <div className="flex justify-around flex-col items-center sm:flex-row">
 
           <Icon href="https://www.linkedin.com/in/diego-araujo-dev" imgSrc="/portfolio/icons8-linkedin-color/icons8-linkedin-144.svg" alt="linkedin"/>
 
@@ -60,7 +59,7 @@ export default function Contact({className, id} : {className?: string, id?: stri
               alt="whatsapp"
             />
             <div className="cursor-pointer flex justify-center pt-2" onClick={() => setQr("whatsapp")}>
-              <img src={theme === "light" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150 hover:scale-[180%]" alt="qr"/>
+              <img src={theme === "light" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150 hover:scale-[180%] hidden sm:block" alt="qr"/>
             </div>
           </div>
 
@@ -71,7 +70,7 @@ export default function Contact({className, id} : {className?: string, id?: stri
               alt="telegram"
             />
             <div className="cursor-pointer flex justify-center pt-2" onClick={() => setQr("telegram")}>
-              <img src={theme === "light" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150 hover:scale-[180%]" alt="qr"/>
+              <img src={theme === "light" ? "/portfolio/qr_black.svg" : "/portfolio/qr_white.svg"} className="transform scale-150 hover:scale-[180%] hidden sm:block" alt="qr"/>
             </div>
           </div>
         </div>

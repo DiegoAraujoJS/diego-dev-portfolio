@@ -69,7 +69,7 @@ function CarouselItem({title, imgSrc, description, repos} : Project) {
           </div>
           <div className="group flex items-end w-11/12">
             <img src={`/portfolio/github-mark/github-mark${theme === "light" ? "" : "-white"}.svg`} alt="github" className="flex-none peer h-16 w-16"/>
-            <div className="toast relative  peer-hover:flex hover:flex px-5 py-0 min-w-0">
+            <div className="toast relative hidden peer-hover:flex hover:flex px-5 py-0 min-w-0">
               <div className="alert alert-info overflow-hidden p-1 sm:p-3">
                 <div className="text-base grid grid-cols-auto-1fr gap-x-3 gap-y-1 max-w-full overflow-hidden">
                   {repos.map((repo, i) => {
