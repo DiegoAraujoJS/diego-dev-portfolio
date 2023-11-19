@@ -1,10 +1,9 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useTheme from "~/hooks/useTheme";
+import styles from "./contact.module.css"
 
 const myPhoneNumber = "5491135846028"
-
-import styles from "./contact.module.css"
-import useTheme from "~/hooks/useTheme";
 
 const unsecuredCopyToClipboard = (text: string) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea); return Promise.resolve()};
 
@@ -81,7 +80,6 @@ export default function Contact({className, id} : {className?: string, id?: stri
           <p>
             Or send me an email!
           </p>
-          <div className="tooltip tooltip-bottom" data-tip="copy to clipboard">
             <a href="#" onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {
               event.preventDefault(); // Prevent the default anchor action
               const textToCopy = event.currentTarget.innerHTML;
@@ -90,7 +88,6 @@ export default function Contact({className, id} : {className?: string, id?: stri
             }} className="link link-hover text-xl">
               diegolaraujo96@gmail.com
             </a>
-          </div>
         </div>
       </div>
 
