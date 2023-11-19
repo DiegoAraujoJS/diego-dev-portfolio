@@ -58,10 +58,32 @@ function CarouselItem({title, imgSrc, description, repos} : Project) {
   const theme = useTheme()
   return (
     <div className="carousel-item w-full" id={toCamelCase(title)}>
+
+      <dialog id="my_modal_1" className="modal w-full">
+        <div className="modal-box max-w-full w-3/5">
+          <div className="flex flex-col items-center">
+            <img src="https://res.cloudinary.com/dq4efqvk9/image/upload/f_auto,q_auto/ww7vj9wddrahhilhcpnw" alt="img1" className="object-fill"/>
+            <div className="pt-4 w-full flex justify-center">
+              <div className="w-1/5 flex justify-between">
+                <button className="btn">{`<`}</button>
+                <button className="btn">{`>`}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+
       <div className="flex md:w-full">
-        <div className="w-1/4 h-auto">
+        <div className="w-1/4 h-auto flex flex-col">
           <p className="md:text-3xl text-xl text-center w-full">{title}</p>
           <img src={imgSrc} className="" alt="Tailwind CSS Carousel component" />
+          <div className="border border-solid border-white h-full p-2" onClick={()=>document.getElementById('my_modal_1')?.showModal()}>
+            <img src="https://res.cloudinary.com/dq4efqvk9/image/upload/f_auto,q_auto/ww7vj9wddrahhilhcpnw" alt="img1"/>
+          </div>
         </div>
         <div className="flex-1 p-4 md:p-16 md:text-xl flex flex-col justify-between">
           <div>
