@@ -9,7 +9,8 @@ type Project = {
   repos: {
     description?: string
     url: string
-  }[]
+  }[],
+  images: string[]
 }
 
 const projects: Project[] = [
@@ -25,6 +26,9 @@ const projects: Project[] = [
       {
         url: "https://github.com/DiegoAraujoJS/discord-bots",
       }
+    ],
+    images: [
+      "https://res.cloudinary.com/dq4efqvk9/image/upload/f_auto,q_auto/ww7vj9wddrahhilhcpnw" 
     ]
   },
   {
@@ -44,6 +48,11 @@ const projects: Project[] = [
         url: "https://github.com/DiegoAraujoJS/git-deploy-panel",
         description: "Panel client"
       }
+    ],
+    images: [
+      "https://res.cloudinary.com/dq4efqvk9/image/upload/v1700425710/Screen_Shot_2023-11-19_at_17.13.18_j42xh7.png",
+      "https://res.cloudinary.com/dq4efqvk9/image/upload/v1700425710/Screen_Shot_2023-11-19_at_17.13.31_bzqrgv.png",
+      "https://res.cloudinary.com/dq4efqvk9/image/upload/v1700425710/Screen_Shot_2023-11-19_at_17.14.36_nj3b1b.png",
     ]
   },
 ]
@@ -54,15 +63,15 @@ function toCamelCase(str: string): string {
     .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
 }
 
-function CarouselItem({title, imgSrc, description, repos} : Project) {
+function CarouselItem({title, imgSrc, description, repos, images, itemId} : Project & {itemId: number}) {
   const theme = useTheme()
   return (
     <div className="carousel-item w-full" id={toCamelCase(title)}>
 
-      <dialog id="my_modal_1" className="modal w-full">
+      <dialog id={`my_modal_${itemId}`} className="modal w-full">
         <div className="modal-box max-w-full w-3/5">
           <div className="flex flex-col items-center">
-            <img src="https://res.cloudinary.com/dq4efqvk9/image/upload/f_auto,q_auto/ww7vj9wddrahhilhcpnw" alt="img1" className="object-fill"/>
+            {images.map((image, i) => <img src={image} key={i} alt={`${toCamelCase(title)}${i}`} className="object-fill"/>)}
             <div className="pt-4 w-full flex justify-center">
               <div className="w-1/5 flex justify-between">
                 <button className="btn">{`<`}</button>
@@ -78,11 +87,11 @@ function CarouselItem({title, imgSrc, description, repos} : Project) {
       </dialog>
 
       <div className="flex md:w-full">
-        <div className="w-1/4 h-auto flex flex-col">
+        <div className="w-1/4 h-auto flex flex-col p-3">
           <p className="md:text-3xl text-xl text-center w-full">{title}</p>
           <img src={imgSrc} className="" alt="Tailwind CSS Carousel component" />
-          <div className="border border-solid border-white h-full p-2" onClick={()=>document.getElementById('my_modal_1')?.showModal()}>
-            <img src="https://res.cloudinary.com/dq4efqvk9/image/upload/f_auto,q_auto/ww7vj9wddrahhilhcpnw" alt="img1"/>
+          <div className="border border-solid border-neutral-400 h-full p-2" onClick={()=>document.getElementById(`my_modal_${itemId}`)?.showModal()}>
+            {images.length ? <img src={images[0]} alt="img1"/> : null}
           </div>
         </div>
         <div className="flex-1 p-4 md:p-16 md:text-xl flex flex-col justify-between">
@@ -125,7 +134,7 @@ export default function Projects({className, id} : {className?: string, id?: str
         if (e.target.scrollLeft % e.target.offsetWidth === 0) setScrollPosition(Array.from({ length: projects.length }, (_, i) => i).find((page) => e.target.offsetWidth * page === e.target.scrollLeft) || 0)
       }}>
 
-        {projects.map((project, i) => <CarouselItem key={i} {...project}/>)}
+        {projects.map((project, i) => <CarouselItem key={i} itemId={i} {...project}/>)}
 
       </div>
 
