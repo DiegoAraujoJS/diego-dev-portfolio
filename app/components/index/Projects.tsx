@@ -65,17 +65,18 @@ function toCamelCase(str: string): string {
 
 function CarouselItem({title, imgSrc, description, repos, images, itemId} : Project & {itemId: number}) {
   const theme = useTheme()
+  const [imageFocus, setImageFocus] = useState(0)
   return (
     <div className="carousel-item w-full" id={toCamelCase(title)}>
 
       <dialog id={`my_modal_${itemId}`} className="modal w-full">
         <div className="modal-box max-w-full w-3/5">
           <div className="flex flex-col items-center">
-            {images.map((image, i) => <img src={image} key={i} alt={`${toCamelCase(title)}${i}`} className="object-fill"/>)}
+            <img src={images[imageFocus]} className="object-fill"/>
             <div className="pt-4 w-full flex justify-center">
               <div className="w-1/5 flex justify-between">
-                <button className="btn">{`<`}</button>
-                <button className="btn">{`>`}</button>
+                <button className="btn" onClick={() => imageFocus > 0 ? setImageFocus(imageFocus - 1) : null}>{`<`}</button>
+                <button className="btn" onClick={() => imageFocus < images.length - 1 ? setImageFocus(imageFocus + 1) : null}>{`>`}</button>
               </div>
             </div>
           </div>
@@ -90,7 +91,7 @@ function CarouselItem({title, imgSrc, description, repos, images, itemId} : Proj
         <div className="w-1/4 h-auto flex flex-col p-3">
           <p className="md:text-3xl text-xl text-center w-full">{title}</p>
           <img src={imgSrc} className="" alt="Tailwind CSS Carousel component" />
-          <div className="border border-solid border-neutral-400 h-full p-2" onClick={()=>document.getElementById(`my_modal_${itemId}`)?.showModal()}>
+          <div className="border border-solid border-neutral-400 h-full p-2" onClick={()=>(document.getElementById(`my_modal_${itemId}`) as any)?.showModal()}>
             {images.length ? <img src={images[0]} alt="img1"/> : null}
           </div>
         </div>
