@@ -25,7 +25,7 @@ function QrImage({qr} : {
 }
 
 function Icon({href, imgSrc, alt}: {
-  href: string
+  href?: string
   imgSrc: string
   alt: string
 }) {
